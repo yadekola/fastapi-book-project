@@ -1,10 +1,14 @@
 from fastapi import FastAPI
+from books import router as books_router
 from fastapi.middleware.cors import CORSMiddleware
 
 from api.router import api_router
 from core.config import settings
 
 app = FastAPI()
+
+# Include the books router
+app.include_router(books_router)
 
 app.add_middleware(
     CORSMiddleware,
